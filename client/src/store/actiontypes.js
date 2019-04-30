@@ -6,4 +6,4 @@ export const edit = "EDIT",
             addUser="ADD_USER",
             removeUser = "Remove_User",
             addError="ADD_ERROR",
-            removeError="REMOVE_ERROR",
+            removeError="REMOVE_ERROR"

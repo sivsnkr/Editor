@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
-import Main from "./containers/main";
+import Main from "./main";
 import {Provider} from "react-redux";
-import Navbar from "./containers/navbar";
+import Navbar from "./navbar";
 import jwtDecode from "jwt-decode";
 import {configureStore} from "../store";
-
+import {addUser} from "../store/actiontypes";
 const store = configureStore();
 if(localStorage.length > 0){
   const user = jwtDecode(localStorage.jwtToken);
   store.dispatch(addUser(user));
-  setTokenHeader(user.token);
+  //setTokenHeader(user.token);
 }
 
 class App extends Component{

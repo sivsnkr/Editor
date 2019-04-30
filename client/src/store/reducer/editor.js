@@ -7,8 +7,9 @@ export default(state=defaultState,action)=>{
             return [...state,action.data];
         case deleteE:
             let files = state.filter(file=>{
-                return file._id!=action._id;
+                return file._id!==action._id;
             })
+            return files;
         default:
             return state;
     }
