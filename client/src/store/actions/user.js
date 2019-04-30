@@ -17,7 +17,7 @@ export const removeUserFromApp = function(){
 export const logout = function(){
     return dispatch=>{
         return new Promise((resolve,reject)=>{
-            dispatch(removeUserFromApp);
+            dispatch(removeUserFromApp());
             localStorage.clear();
             return resolve();
         })
