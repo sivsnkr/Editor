@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express.Router();
+const db = require("./db");
 
 app.get("/",async ()=>{
     //get all the files from database
+    
 })
 
 app.post("/edit/:id", async ()=>{
