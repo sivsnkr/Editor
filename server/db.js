@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 //connecting to the database
-mongoose.connect("mongodb://localhost/Editor");
+mongoose.connect("mongodb://localhost/Editor",{useNewUrlParser: true});
 //for debugging purpose, shows the command run in the database
 mongoose.set("debug",true);
 //working in the mongoose with js promise
 mongoose.Promise = Promise;
 
+const bcrypt = require("bcrypt");
 
 //making the schema for the editor
 const editorSchema = mongoose.Schema({
@@ -16,7 +17,11 @@ const editorSchema = mongoose.Schema({
 const editor = mongoose.model("EditorFiles", editorSchema);
 //user schema
 const userSchema = mongoose.Schema({
-    username: String,
+    username: {
+        type: String,
+        require: true,
+        unique: true
+    },
     password: String,
 });
 

@@ -4,7 +4,7 @@ const db = require("./db");
 
 app.get("/",async ()=>{
     //get all the files from database
-    
+
 })
 
 app.post("/edit/:id", async ()=>{
@@ -18,3 +18,6 @@ app.get("/delete/:id", async ()=>{
 app.post("/post/:id", async ()=>{
     //for saving the file
 })
+
+
+module.exports = app;

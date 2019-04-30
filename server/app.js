@@ -3,12 +3,14 @@ const express = require("express");
 const app = express();
 const port = process.env.port||3001;
 const error = require("./error");
-//making the route url encoded type
-express.urlencoded({extended: true});
+const routes = require("./routes"),
+    user = require("./user");
+//making the route url json type
+app.use(express.json());
 
 //all the routes goes here
-app.use("/file");
-
+app.use("/file",routes);
+app.use("/user",user);
 //for error handling
 app.use(error);
 //listening to server
