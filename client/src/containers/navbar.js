@@ -1,6 +1,8 @@
 import React ,{Component} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {logout} from "../store/actions/user";
+
 class Navbar extends Component{
     render(){
         let {isAuthenticated} = this.props;
@@ -11,20 +13,25 @@ class Navbar extends Component{
             flexDirection: "row",
             fontSize: "30px"
         }
+        const linkStyle ={
+            marginLeft: "20px",
+            color: "blue",
+            textDecoration: "none"
+        }
         return(
             <div style={style}>
-                <a style = {{color: "blue"}} Link to="#">Code Box</a>
+                <Link to="/" style = {{color: "blue"}}>Code Box</Link>
                 {isAuthenticated === true?(
-                    <div id="logout">
-                        <Link to="/logout">logout</Link>
+                    <div id="logout" style={{marginLeft:"50%"}} onClick={this.props.logout}>
+                        <Link to="#">logout</Link>
                     </div>
                 ):(
-                    <div style={{display: "flex",flexDirection: "row",justifyContent: "flex-end",width: "90%"}}>
+                    <div style={{display: "flex",flexDirection: "row",justifyContent: "flex-end",width: "70%"}}>
                         <div id="signin">
-                            <Link to="/signin">Sign In</Link>
+                            <Link to="/signin" style={linkStyle}>Sign In</Link>
                         </div>
-                        <div id="signup" style={{marginLeft: "30px"}}>
-                            <Link to="/signup">Sign Up</Link>
+                        <div id="signup">
+                            <Link to="/signup" style={linkStyle}>Sign Up</Link>
                         </div>
                     </div>
                 )
@@ -40,4 +47,4 @@ const mapStateToProps = function(state){
     }
 }
 
-export default connect(mapStateToProps,null)(Navbar);
+export default connect(mapStateToProps,{logout})(Navbar);

@@ -1,12 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const port = process.env.port||3001;
 const error = require("./error");
 const routes = require("./routes"),
     user = require("./user");
 //making the route url json type
 app.use(express.json());
+app.use(cors());
 
 //all the routes goes here
 app.use("/file",routes);

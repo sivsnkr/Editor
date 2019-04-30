@@ -6,11 +6,11 @@ import Navbar from "./navbar";
 import jwtDecode from "jwt-decode";
 import {configureStore} from "../store";
 import {addUser} from "../store/actiontypes";
+import { addUserToapp } from '../store/actions/user';
 const store = configureStore();
 if(localStorage.length > 0){
   const user = jwtDecode(localStorage.jwtToken);
-  store.dispatch(addUser(user));
-  //setTokenHeader(user.token);
+  store.dispatch(addUserToapp(user));
 }
 
 class App extends Component{

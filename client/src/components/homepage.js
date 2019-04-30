@@ -1,14 +1,14 @@
 import React from "react";
 
 export default function(props){
-    const isAuhenticated = props;
+    const {isAuthenticated} = props;
     return(
-        <div>
-            {isAuhenticated === true ?(
-            <div/>
+        <div className="homepage">
+            {isAuthenticated === true ?(
+                <div>He</div>
             ):(
-                <div style={{background: "black"}}>
-                    <h1 style={{marginTop: "40%",marginLeft: "auto"}}>Hello</h1>
+                <div className="welcome-style">
+                    <h1>Welcome to Code BOX</h1>
                 </div>
             )}
         </div>

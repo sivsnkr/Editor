@@ -4,7 +4,7 @@ const express = require("express"),
     jwtToken = require("jsonwebtoken");
 //using jsonwebtoken to maintain the sesson
 
-app.post("/signin",async (req,res,next)=>{
+app.post("/SignIn",async (req,res,next)=>{
     try{
         const {username,password} = req.body;
         const user = await db.user.findOne({username});
@@ -36,7 +36,7 @@ app.post("/signin",async (req,res,next)=>{
     }
 })
 
-app.use("/signup", async (req,res,next)=>{
+app.use("/SignUp", async (req,res,next)=>{
     try{
         const user = await db.user.create(req.body);
         const {_id,username} = user;
