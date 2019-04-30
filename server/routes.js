@@ -7,6 +7,21 @@ app.get("/",async ()=>{
 
 })
 
+app.post("/create",async(req,res,next)=>{
+    //for creating the file
+    try{
+        const file = await db.editor.create(req.body);
+        const {name,_id} = file;
+        return res.status(200).json({
+            _id,
+            name
+        })
+    }catch(err){
+        err.message = "Not able to create the file!";
+        return next(err);
+    }
+})
+
 app.post("/edit/:id", async ()=>{
     //for editing the file
 })
