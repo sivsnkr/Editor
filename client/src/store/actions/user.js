@@ -1,6 +1,7 @@
 import {addUser,removeUser} from "../actiontypes";
 import apiCall from "../../api/apicall";
 import {showError,removeErrorFromApp} from "./error";
+import {fetchAll} from "./editor";
 export const addUserToapp = function(data){
     return{
         type: addUser,
@@ -31,7 +32,8 @@ export const authenticate = function(type,data){
             .then(res=>{
                 dispatch(addUserToapp(res));
                 localStorage.setItem("jwtToken",res.token);
-                dispatch(removeErrorFromApp);
+                dispatch(removeErrorFromApp());
+                fetchAll(res._id);
                 return resolve(res);
             }).catch(err=>{
                 dispatch(showError(err));

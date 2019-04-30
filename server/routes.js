@@ -2,10 +2,10 @@ const express = require("express");
 const app = express.Router();
 const db = require("./db");
 
-app.get("/",async (req,res,next)=>{
+app.get("/allfile/:userid",async (req,res,next)=>{
     //get all the files from database
     try{
-        var files = await db.editor.find();
+        var files = await db.editor.find({creator: req.params.userid});
         files = files.map((file)=>{
             return {
                 _id: file._id,

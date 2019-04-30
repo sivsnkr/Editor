@@ -36,3 +36,16 @@ code {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.homepage{
+  display: flex;
+  width: 100%;
+  height: 97vh;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.sidebar{
+  width: 20%;
+  border: 2px solid red;
+}

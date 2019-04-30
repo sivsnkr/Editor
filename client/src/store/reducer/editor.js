@@ -1,8 +1,10 @@
-import {add,deleteE} from "../actiontypes";
+import {add,deleteE,fetch} from "../actiontypes";
 const defaultState = [];
 
 export default(state=defaultState,action)=>{
     switch(action.type){
+        case fetch: 
+            return [...action.data];
         case add:
             return [...state,action.data];
         case deleteE:

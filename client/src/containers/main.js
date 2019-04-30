@@ -6,12 +6,11 @@ import Authorization from "../components/authorization";
 import {authenticate} from "../store/actions/user";
 export class Main extends Component{
     render(){
-        const{user,authenticate} = this.props;
+        const{user,authenticate,file} = this.props;
         const isAuthenticate = user.isAuthenticated;
-        
         return(
             <Switch>
-                <Route exact path="/" render={(props)=><HomePage {...props} isAuthenticated={isAuthenticate}/>}/>
+                <Route exact path="/" render={(props)=><HomePage {...props} isAuthenticated={isAuthenticate} allfiles={file}/>}/>
                 <Route exact path="/signup" render={(props)=><Authorization {...props} type="SignUp" authenticate={authenticate}/>}/>
                 <Route exact path="/signin" render={(props)=><Authorization {...props} type="SignIn" authenticate={authenticate}/>}/>
             </Switch>
@@ -21,6 +20,7 @@ export class Main extends Component{
 const mapStateToProps = function(state){
     return {
         user: state.user,
+        file: state.editor
     }
 }
 

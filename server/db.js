@@ -10,7 +10,7 @@ const bcrypt = require("bcrypt");
 
 //making the schema for the editor
 const editorSchema = mongoose.Schema({
-    creator: mongoose.Schema.Types.ObjectId,
+    creator: String,
     name: String,
     body: String,
 });

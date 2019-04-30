@@ -2,7 +2,6 @@ import React ,{Component} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {logout} from "../store/actions/user";
-
 class Navbar extends Component{
     render(){
         let {isAuthenticated} = this.props;
@@ -20,7 +19,7 @@ class Navbar extends Component{
         }
         return(
             <div style={style}>
-                <Link to="/" style = {{color: "blue"}}>Code Box</Link>
+                <Link to="/" style = {{color: "blue",textDecoration: "none"}}>Code Box</Link>
                 {isAuthenticated === true?(
                     <div id="logout" style={{marginLeft:"50%"}} onClick={this.props.logout}>
                         <Link to="#">logout</Link>

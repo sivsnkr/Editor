@@ -16,8 +16,6 @@ export default function(props){
 
     const handleSubmit = function(e){
         e.preventDefault();
-        console.log(username);
-        console.log(password);
         const userData = {
             username,
             password
