@@ -13,7 +13,7 @@ const editorSchema = mongoose.Schema({
     name: String,
     body: String,
 });
-
+const editor = mongoose.model("EditorFiles", editorSchema);
 //user schema
 const userSchema = mongoose.Schema({
     username: String,
@@ -46,6 +46,9 @@ userSchema.methods.comparePassword = async (input,next)=>{
         return next(err);
     }
 }
-
+const user = mongoose.model("users", userSchema);
 //exporting the module
-module.exports = mongoose.model("EditorFiles", editorSchema);
+module.exports = {
+    user,
+    editor
+};
