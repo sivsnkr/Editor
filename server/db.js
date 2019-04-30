@@ -22,20 +22,29 @@ const userSchema = mongoose.Schema({
 
 //hashing the password before save
 userSchema.pre("save",async function(next){
-    if(!this.isModified("password")){
-        return next();
-    }else{
-        const hashedPassword = await bcrypt.hash(this.password,10);
-        this.password = hashedPassword;
-        return next();
-    }
+    try{
+        if(!this.isModified("password")){
+            return next();
+        }else{
+            const hashedPassword = await bcrypt.hash(this.password,10);
+            this.password = hashedPassword;
+            return next();
+        }
+    }catch(err){
+        err.message = "Not able to hash password!"
+        return next(err);
+    } 
 })
 
 //method for comparing the password
 userSchema.methods.comparePassword = async (input,next)=>{
-    const compare = await bcrypt.compare(input,this.password);
-    return compare;
-
+    try{
+        const compare = await bcrypt.compare(input,this.password);
+        return compare; 
+    }catch(err){
+        err.message = "Password is incorrect!"
+        return next(err);
+    }
 }
 
 //exporting the module
