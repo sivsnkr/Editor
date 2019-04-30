@@ -58,13 +58,19 @@ app.post("/edit/:id", async (req,res,next)=>{
     }
 })
 
-app.get("/delete/:id", async ()=>{
+app.get("/delete/:id", async (req,res,next)=>{
     //for deleting the file the file
+    try{
+        await db.editor.deleteOne({_id: req.params.id});
+        return res.status(200).json({
+            message: "File has been successfully deleted"
+        });
+    }catch(err){
+        err.message = "Not able to delete the file, some error happenned"
+        return next(err);
+    }
 })
 
-app.post("/post/:id", async ()=>{
-    //for saving the file
-})
 
 
 module.exports = app;
