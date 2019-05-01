@@ -16,3 +16,18 @@ export const fetchAll = function(userid){
         store.dispatch(fetchAllfiles(res.files));
     })
 }
+
+export const deleteFileFromRedux = function(id){
+    return{
+        type: deleteE,
+        id
+    }
+}
+export const deleteFile = function(id){
+    console.log(id);
+    store.dispatch(deleteFileFromRedux(id));
+    return apiCall("get",`http://localhost:3001/file/delete/${id}`)
+    .then(res=>{
+        console.log(res);
+    })
+}

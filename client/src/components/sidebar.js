@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import Display from "./display";
+import {deleteFile} from "../store/actions/editor";
 class Sidebar extends Component{
     state = {
         buttonStatus: null,
@@ -30,6 +31,7 @@ class Sidebar extends Component{
                 break;
             case "delete":
                 //fire the request for delete
+                deleteFile(this.state.currentId);
                 this.setState({buttonStatus: null});
                 break;
             case "save":
