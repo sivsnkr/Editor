@@ -3,9 +3,9 @@ simple editor with edit, delete and save button
 
 it implements
 
-React with Redux( as frontend),
-Express(as backend),
-mongodb(database),
+* React with Redux( as frontend)
+* Express(as backend),
+* mongodb(database),
 
 
 # instruction for running
