@@ -6,12 +6,6 @@ app.get("/allfile/:userid",async (req,res,next)=>{
     //get all the files from database
     try{
         var files = await db.editor.find({creator: req.params.userid});
-        files = files.map((file)=>{
-            return {
-                _id: file._id,
-                name: file.name,
-            }
-        })
         return res.status(200).json({files});
     }catch(err){
         err.message = "Not able to fetch the files";

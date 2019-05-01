@@ -1,22 +1,54 @@
-import React from "react";
+import React,{Component} from "react";
+import Display from "./display";
+class Sidebar extends Component{
+    state = {
+        buttonStatus: null,
+        body: "",
+        currentId: null,
+    }
 
-export function Sidebar(props){
-    const allfile = props.allfiles.map(file=>{
-        return(
-            <div className="fileName" 
-            id={file._id} 
-            onClick={(file._id)}
-            style={{textAlign: 'center',border: "2px solid blue"}}
-            >
-                {file.name}
+    handleChangeFromAnotherComponent = (body,id)=>{
+        this.setState({body,currentId: id},()=>{
+            console.log(this.state);
+        });
+    }
+    render(){
+        const allfile = this.props.allfiles.map(file=>{
+            return(
+                <Display
+                    key={file._id}
+                    name={file.name}
+                    id={file._id}
+                    body={file.body}
+                    handleChange={this.handleChangeFromAnotherComponent}
+                />
+            )
+        })
+        const {body,buttonStatus} = this.state;
+        return (
+            <div className="wholeEditor">
+                <div className="sidebar">
+                    <h3 style={{color:"white"}}>List of files</h3>
+                    <hr/>
+                    {allfile}
+                </div>
+                <div className="editor">
+                    {
+                        buttonStatus === "edit"?(
+                            <textarea
+                            value={body}
+                            />
+                        ):(
+                            <textarea disabled
+                            value={body}
+                            />
+                        )
+                    }
+                    
+                </div>
             </div>
         )
-    })
-    return (
-        <div className="sidebar">
-            <h3>List of files</h3>
-            <hr/>
-            {allfile}
-        </div>
-    )
+    }
 }
+
+export default Sidebar;

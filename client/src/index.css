@@ -43,9 +43,41 @@ code {
   height: 97vh;
   flex-direction: column;
   flex-wrap: wrap;
+  background-color: black;
 }
 
 .sidebar{
   width: 20%;
-  border: 2px solid red;
+  border-right: 1px solid red;
+  padding-right: 7px;
+  
+}
+
+.sidebar-component{
+  background-color: antiquewhite;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 1.3em;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  height: 30px;
+  background: grey;
+}
+
+.wholeEditor{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 95vh;
+}
+
+.editor{
+  width: 100%;
+}
+.editor textarea{
+  height: 80vh;
+  color: black;
+  width: 100%;
+  background-color: wheat;
 }

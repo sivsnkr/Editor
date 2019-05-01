@@ -1,6 +1,5 @@
 import React from "react";
-import {Sidebar} from './sidebar';
-import {Editor} from "./editor";
+import Sidebar from './sidebar';
 export default function(props){
     const {isAuthenticated} = props;
     return(
@@ -8,7 +7,6 @@ export default function(props){
             {isAuthenticated === true ?(
                 <div className="homePage">
                     <Sidebar allfiles={props.allfiles}/>
-                    
                 </div>
             ):(
                 <div className="welcome-style">
