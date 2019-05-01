@@ -43,6 +43,7 @@ app.post("/edit/:id", async (req,res,next)=>{
     //for editing the file
     try{
         const file = await db.editor.findOne({_id: req.params.id});
+        file.name = req.body.name;
         file.body = req.body.body;
         await file.save();
         return res.status(200).json(file);
