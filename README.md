@@ -8,10 +8,10 @@ Express(as backend),
 mongodb(database),
 
 
-#instruction for running
+# instruction for running
 
-*turn on mongo server
-*clone the repo
-*run npm install
-*go to client and run npm start
-*go to server and run node app.js
+* turn on mongo server
+* clone the repo
+* run npm install
+* go to client and run npm start
+* go to server and run node app.js
