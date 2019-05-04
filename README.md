@@ -15,3 +15,8 @@ it implements
 * run npm install
 * go to client and run npm start
 * go to server and run node app.js
+
+
+# common error while running
+* if it's showing jwt error, try clearing the localstorage by localstorage.clear() in crome console.
+then refresh the page
